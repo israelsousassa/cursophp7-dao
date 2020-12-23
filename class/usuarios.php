@@ -147,6 +147,21 @@ public function update($login, $password){
 	));
 }
 
+
+public function delete(){
+
+	$sql = new sql();
+	$sql->query("DELETE FROM tb_usuarios WHERE id = :ID", array(
+		':ID'=>$this->getId()
+	));
+
+
+	$this->setId(0);
+	$this->setDeslogin("");
+	$this->setDessenha("");
+	$this->setDtcadastro(new DateTime());
+}
+
 public function __construct($login = "", $password = ""){
 
 	$this->setDeslogin($login);
